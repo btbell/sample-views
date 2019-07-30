@@ -20,4 +20,11 @@
         {% else %}
         <p>There are no users in the system at this time.</p>
     {% endif %}
+
+    <blockquote>
+        <header class="blockquote-header">- views.py</header>
+        class UserInfoListView(generic.ListView):<br/>
+        &nbsp;&nbsp; model = UserInfo<br/>
+        &nbsp;&nbsp; template_name = 'viewssandbox/CBV_list.html'
+    </blockquote>
 {% endblock %}

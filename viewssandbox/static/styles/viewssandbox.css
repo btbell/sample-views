@@ -1,4 +1,25 @@
 /* CSS document */
 
+body {
+    font-family: 'Cormorant', serif;
+}
+h1, h3, footer {
+    font-family: 'Darker Grotesque', sans-serif;
+}
 h3 {
-    color: red;}
+    color: red;
+}
+blockquote {
+    padding: .4rem .6rem;
+    background: #ccc;
+    font-family: "Courier New", Serif;
+}
+.blockquote-header {
+    font: bold 90% 'Darker Grotesque', sans-serif;
+}
+.bq-with-top-margin {
+    margin-top: 1rem;
+}
+ul {
+    list-style-type: circle;
+}

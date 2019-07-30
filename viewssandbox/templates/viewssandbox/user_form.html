@@ -23,6 +23,19 @@
     <input type="submit" value="Submit">
 </form>
 
+    <blockquote class="bq-with-top-margin">
+        <header class="blockquote-header">- views.py</header>
+        def form_test(request):<br>
+        &nbsp; if request.method == 'POST':<br>
+        &nbsp;&nbsp;&nbsp; form = UserForm(request.POST)<br>
+        &nbsp;&nbsp;&nbsp; if form.is_valid():<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pass  # does nothing, just trigger the validation<br>
+        &nbsp;&nbsp;else:<br>
+        &nbsp;&nbsp;&nbsp; form = UserForm()<br>
+        &nbsp;&nbsp;return render(request, 'viewssandbox/user_form.html', {'form': form})
+    </blockquote>
+
+<footer>
 <script>
     $( "#id_attend_date" ).datepicker();
 </script>

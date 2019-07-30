@@ -20,4 +20,15 @@
         {% else %}
         <p>There are no users in the system at this time.</p>
     {% endif %}
+    <blockquote>
+        <header class="blockquote-header">- views.py</header>
+        def fbvlist(request):<br>
+        &nbsp;&nbsp; total_users = UserInfo.objects.all()<br><br>
+
+        &nbsp;&nbsp; context = {<br>
+        &nbsp;&nbsp;&nbsp; 'total_users': total_users,<br>
+        &nbsp;&nbsp; }<br><br>
+
+        &nbsp;&nbsp; return render(request, 'viewssandbox/FBVlist.html', context=context)
+    </blockquote>
 {% endblock %}
