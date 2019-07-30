@@ -9,9 +9,14 @@ from .models import UserInfo
 from .forms import UserForm
 #import datetime
 
+# landing page for the views sandbox
+def landing(request):
+
+    return render(request, 'viewssandbox/landing.html')
 
 # just a simple view with some html text
 def simple(request):
+
   return HttpResponse('This is simple view with some text returned using the HttpResponse method and a text string.')
 
 def test(request):

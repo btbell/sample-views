@@ -19,3 +19,10 @@ class UserInfo(CommonField):
 
     class Meta:
         ordering = ['first_name']
+
+# simple user info for Modelforms
+class DogForm(CommonField):
+    pet_name = models.CharField(max_length=40, null=False, help_text="Please enter a first name.")
+    owner_last_name = models.CharField(max_length=60, null=False)
+    attend_date = models.DateField(null=False, blank=False)
+    email = models.EmailField(null=False)

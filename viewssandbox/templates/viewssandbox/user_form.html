@@ -16,7 +16,7 @@
 {% block content %}
 
 <p>Content of the document......</p>
-
+<!-- the DateField in the form object will use the jQuery datepicker - see JS on the user_form html -->
 <form method="post" novalidate>
     {% csrf_token %}
     {{ form }}
