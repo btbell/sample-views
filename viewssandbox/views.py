@@ -5,6 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import UserInfo
+
 from .forms import UserForm
 #import datetime
 
@@ -27,6 +28,16 @@ def fbvlist(request):
 
     return render(request, 'viewssandbox/FBVlist.html', context=context)
 
+def form_test(request):
+  if request.method == 'POST':
+    form = UserForm(request.POST)
+    if form.is_valid():
+      pass  # does nothing, just trigger the validation
+  else:
+    form = UserForm()
+  return render(request, 'viewssandbox/user_form.html', {'form': form})
+
+# user test form
 def user(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -44,7 +55,7 @@ def user(request):
         else:
             form = UserForm()
 
-        return render(request, 'userform.html', {'form': form})
+    return render(request, 'user_form.html', {'form': form})
 
 class UserInfoListView(generic.ListView):
     model = UserInfo
