@@ -5,12 +5,17 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import UserInfo
-import datetime
+from .forms import UserForm
+#import datetime
 
 
 # just a simple view with some html text
 def simple(request):
   return HttpResponse('This is simple view with some text returned using the HttpResponse method and a text string.')
+
+def test(request):
+
+    return render(request, 'viewssandbox/formtest.html')
 
 # a simple Function Based LIST View with template
 def fbvlist(request):
@@ -22,8 +27,29 @@ def fbvlist(request):
 
     return render(request, 'viewssandbox/FBVlist.html', context=context)
 
+def user(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = UserForm(request.POST)
+        # check to see if it's valid
+        if form.is_valid():
+            pass # does nothing
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            #return HttpResponse('/thanks')
+
+        # if a GET (or any other method) we'll create a blank form
+        else:
+            form = UserForm()
+
+        return render(request, 'userform.html', {'form': form})
+
 class UserInfoListView(generic.ListView):
     model = UserInfo
     template_name = 'viewssandbox/CBV_list.html'
+
+
 
 
