@@ -1,5 +1,5 @@
 from django import forms
-from .models import DogForm
+from .models import DogInfo
 
 # a simple form using the Form class
 class UserForm(forms.Form):
@@ -8,9 +8,9 @@ class UserForm(forms.Form):
   attend_date = forms.DateField(label='Date attending')
   email = forms.EmailField(label='Email')
 
-class DogInfo(forms.ModelForm):
+class DogInfoForm(forms.ModelForm):
 
     class Meta:
-        model = DogForm
+        model = DogInfo
         fields = ('pet_name', 'owner_last_name', 'attend_date', 'email')
 

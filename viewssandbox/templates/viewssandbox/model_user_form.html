@@ -17,7 +17,6 @@
 
 <p>Content of the document......</p>
 <!-- the DateField in the form object will use the jQuery datepicker - see JS on the user_form html -->
-<!-- this form uses the Form class -->
 <form method="post" novalidate>
     {% csrf_token %}
     {{ form }}
@@ -26,23 +25,22 @@
 
     <blockquote class="bq-with-top-margin">
         <header class="blockquote-header">- forms.py</header>
-        class UserForm(forms.Form):<br><br>
-        &nbsp;&nbsp; first_name = forms.CharField(max_length=30)<br>
-        &nbsp;&nbsp; last_name = forms.CharField(label='Last name', max_length=100)<br>
-        &nbsp;&nbsp; attend_date = forms.DateField(label='Date attending')<br>
-        &nbsp;&nbsp; email = forms.EmailField(label='Email')<br>
+        class DogInfoForm(forms.ModelForm):<br><br>
+        &nbsp;&nbsp; class Meta:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; model = DogInfo<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; fields = ('pet_name', 'owner_last_name', 'attend_date', 'email')
     </blockquote>
 
     <blockquote class="bq-with-top-margin">
         <header class="blockquote-header">- views.py</header>
-        def form_test(request):<br>
+        def model_form_test(request):<br>
         &nbsp; if request.method == 'POST':<br>
-        &nbsp;&nbsp;&nbsp; form = UserForm(request.POST)<br>
+        &nbsp;&nbsp;&nbsp; form = DogInfoForm(request.POST)<br>
         &nbsp;&nbsp;&nbsp; if form.is_valid():<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pass  # does nothing, just trigger the validation<br>
         &nbsp;&nbsp;else:<br>
-        &nbsp;&nbsp;&nbsp; form = UserForm()<br>
-        &nbsp;&nbsp;return render(request, 'viewssandbox/user_form.html', {'form': form})
+        &nbsp;&nbsp;&nbsp; form = DogInfoForm()<br>
+        &nbsp;&nbsp;return render(request, 'viewssandbox/model_user_form.html', {'form': form})
     </blockquote>
 
 <footer>

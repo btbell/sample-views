@@ -7,10 +7,12 @@
 <section>
     <article>
         <p>This is a Django 2 web application which serves as a sandbox, test area, and reference by example for working with Django views.</p>
-        <p><em>Simple</em> - is an example of a very basic view <a href="{% url 'viewssandbox:simple' %}">returning html text using the HttpResponse method</a>.
-        <p><em>fbvlist</em> - is an example of a <a href="{% url 'viewssandbox:fbvlist' %}">List using a Function Based View</a>.
-        <p><em>cbvlist</em> - is an example of a <a href="{% url 'viewssandbox:cbvlist' %}">List using a Class Based View</a>.
+        <hr>
+        <p><em>Simple</em> - is an example of a very basic view <a href="{% url 'viewssandbox:simple' %}">returning html text using the HttpResponse method</a>.</p>
+        <p><em>fbvlist</em> - is an example of a <a href="{% url 'viewssandbox:fbvlist' %}">List using a Function Based View</a> (FBV).</p>
+        <p><em>cbvlist</em> - is an example of a <a href="{% url 'viewssandbox:cbvlist' %}">List using a Class Based View</a> (CBV).</p>
         <p><em>form_test</em> - is a <a href="{% url 'viewssandbox:form_test' %}"> form using the Form class</a> (forms.Form).</p>
+        <p><em>model_form_test</em> - is a <a href="{% url 'viewssandbox:model_form_test' %}"> form using the ModelForm class</a> (forms.ModelForm).</p>
     </article>
 </section>
 {% endblock %}
