@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 #from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import UserInfo, DogInfo
+from .models import UserInfo, DogInfo, Reporter, Article
 from .forms import UserForm, DogInfoForm
 #import datetime
 
@@ -44,17 +44,24 @@ def form_test(request):
 # dog/owner form
 def model_form_test(request):
   if request.method == 'POST':
-    form = DogInfoFormForm(request.POST)
+    form = DogInfoForm(request.POST)
     if form.is_valid():
       pass  # does nothing, just trigger the validation
   else:
     form = DogInfoForm()
   return render(request, 'viewssandbox/model_user_form.html', {'form': form})
 
+# Class Based View example
 class UserInfoListView(generic.ListView):
     model = UserInfo
     template_name = 'viewssandbox/CBV_list.html'
 
+class ReporterDetailView(generic.DetailView):
+    model = Reporter
+    template_name = 'viewssandbox/reporter_detail.html'
+
+class ArticleDetailView(generic.DetailView):
+    model = Article
 
 
 

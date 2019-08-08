@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse  # Used to generate urls by reversing the URL patterns
 
 # Create your models here.
 DB_PREFIX = 'viewssandbox'
@@ -26,3 +27,27 @@ class DogInfo(CommonField):
     owner_last_name = models.CharField(max_length=60, null=False)
     attend_date = models.DateField(null=False, blank=False)
     email = models.EmailField(null=False)
+
+class Reporter(models.Model):
+    f_name = models.CharField(max_length=100)
+    l_name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return '{0}, {1}'.format(self.l_name, self.f_name)
+
+class Article(models.Model):
+    reporter = models.ForeignKey(Reporter, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    pub_date = models.DateField()
+
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular author instance.
+        """
+        return reverse('reporter-detail', args=[str(self.id)])
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering =('title',)
