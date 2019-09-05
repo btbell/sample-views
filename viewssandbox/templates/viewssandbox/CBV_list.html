@@ -5,16 +5,22 @@
 {% block content %}
     <h1>Class Based View LIST</h1>
 
+    <form action="{% url 'viewssandbox:cbvsearch' %}" method="get">
+        <input name="q" type="text" placeholder="Search...">
+    </form>
+
     <h3>User List</h3>
 
     {% if object_list %}
     <ul>
         <!-- if you don't set a context_object_name in the view, object_list becomes the default -->
         {% for user_info in object_list %}
-        <li>First: {{ user_info.first_name }}</li>
-        <li>Last: {{ user_info.last_name }}</li>
-        <li>Date attending: {{ user_info.attend_date}}</li>
-        <li>Email: {{ user_info.email }}</li>
+        <p>
+        <p>First: {{ user_info.first_name }}</p>
+        <p>Last: {{ user_info.last_name }}</p>
+        <p>Date attending: {{ user_info.attend_date}}</p>
+        <p>Email: {{ user_info.email }}</p>
+        </li>
         {% endfor %}
     </ul>
         {% else %}

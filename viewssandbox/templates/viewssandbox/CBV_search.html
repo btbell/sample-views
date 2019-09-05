@@ -1,0 +1,18 @@
+{% extends 'viewssandbox/base.html' %}
+
+{% block title %}Class Based View ListView SEARCH{% endblock %}
+
+{% block content %}
+    <h1>Class Based View LIST SEARCH</h1>
+
+    <h3>Search Results</h3>
+    <ul>
+  {% for user in object_list %}
+    <li>
+        <p>First: {{ user.first_name }}</p>
+        <p>Last: {{ user.last_name }}</p>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

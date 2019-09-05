@@ -6,6 +6,7 @@ from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import UserInfo, DogInfo, Reporter, Article
 from .forms import UserForm, DogInfoForm
+from django.db.models import Q
 #import datetime
 
 # landing page for the views sandbox
@@ -55,6 +56,23 @@ def model_form_test(request):
 class UserInfoListView(generic.ListView):
     model = UserInfo
     template_name = 'viewssandbox/CBV_list.html'
+
+class UserSearchListView(generic.ListView):
+    model = UserInfo
+    template_name = 'viewssandbox/CBV_search.html'
+    #queryset = UserInfo.objects.filter(first_name__icontains='hannah')  # new
+
+    """def get_queryset(self):  # new
+        return UserInfo.objects.filter(
+            Q(first_name__icontains='hannah') | Q(last_name__icontains='bell')
+        )"""
+
+    def get_queryset(self):  # new
+        query = self.request.GET.get('q')
+        object_list = UserInfo.objects.filter(
+            Q(first_name__icontains=query) | Q(last_name__icontains=query)
+        )
+        return object_list
 
 class ReporterDetailView(generic.DetailView):
     model = Reporter

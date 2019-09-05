@@ -12,6 +12,7 @@ urlpatterns = [
     path('modelform_test/', views.model_form_test, name='model_form_test'),
     path('fbvlist/', views.fbvlist, name='fbvlist'),
     path('cbvlist/', views.UserInfoListView.as_view(), name='cbvlist'),
+    path('search/', views.UserSearchListView.as_view(), name='cbvsearch'),
     path('reporter/<int:pk>', views.ReporterDetailView.as_view(), name='reporter'),
     path('article/<int:pk>', views.ArticleDetailView.as_view(), name ='article'),
   ]

@@ -56,7 +56,7 @@ ROOT_URLCONF = 'viewssandboxbase.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/templates/'],
+        'DIRS': ['/templatesORIG/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,4 +120,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 MEDIA_URL = '/media/'
-STATIC_URL = '/static/'
+STATIC_URL = '/staticORIG/'
