@@ -23,3 +23,9 @@ blockquote {
 ul {
     list-style-type: circle;
 }
+.search-result {
+    list-style: none;
+}
+.result, .search-result p {
+    border-bottom: 2px dashed #cca;
+}

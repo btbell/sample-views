@@ -15,11 +15,11 @@
     <ul>
         <!-- if you don't set a context_object_name in the view, object_list becomes the default -->
         {% for user_info in object_list %}
-        <p>
-        <p>First: {{ user_info.first_name }}</p>
-        <p>Last: {{ user_info.last_name }}</p>
-        <p>Date attending: {{ user_info.attend_date}}</p>
-        <p>Email: {{ user_info.email }}</p>
+        <li class="result">
+            First: {{ user_info.first_name }}<br>
+            Last: {{ user_info.last_name }}<br>
+            Date attending: {{ user_info.attend_date}}<br>
+            Email: {{ user_info.email }}<br>
         </li>
         {% endfor %}
     </ul>

@@ -5,16 +5,22 @@
 {% block content %}
     <h1>Function Based View LIST</h1>
 
+    <form action="#" method="get">
+        <input name="q" type="text" placeholder="Search...">
+    </form>
+
     <h3>User List</h3>
 
     {% if total_users %}
     <ul>
         <!-- context (total_users) is defined in the view, if it wasn't the default context would be object_list -->
         {% for user_info in total_users %}
-        <li>First: {{ user_info.first_name }}</li>
-        <li>Last: {{ user_info.last_name }}</li>
-        <li>Date attending: {{ user_info.attend_date}}</li>
-        <li>Email: {{ user_info.email }}</li>
+        <li class="result">
+            First: {{ user_info.first_name }}<br>
+            Last: {{ user_info.last_name }}<br>
+            Date attending: {{ user_info.attend_date}}<br>
+            Email: {{ user_info.email }}<br>
+        </li>
         {% endfor %}
     </ul>
         {% else %}

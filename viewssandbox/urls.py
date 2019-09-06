@@ -13,6 +13,7 @@ urlpatterns = [
     path('fbvlist/', views.fbvlist, name='fbvlist'),
     path('cbvlist/', views.UserInfoListView.as_view(), name='cbvlist'),
     path('search/', views.UserSearchListView.as_view(), name='cbvsearch'),
+    #path('fbvsearch', views.fbvsearch, name='fbvsearch'),
     path('reporter/<int:pk>', views.ReporterDetailView.as_view(), name='reporter'),
     path('article/<int:pk>', views.ArticleDetailView.as_view(), name ='article'),
   ]

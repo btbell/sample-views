@@ -20,6 +20,7 @@ class UserInfo(CommonField):
 
     class Meta:
         ordering = ['first_name']
+        verbose_name_plural = "User info"
 
 # simple user info for Modelforms
 class DogInfo(CommonField):
