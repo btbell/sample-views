@@ -1,0 +1,17 @@
+{# viewssandbox/templates/viewssandbox/CBC_sortable_list.html #}
+{% extends 'viewssandbox/base.html' %}
+
+{% block title %}Class Based View Sortable ListView{% endblock %}
+
+{% block content %}
+    <h1>Class Based View Sortable LIST</h1>
+
+    <!--<form action="{% url 'viewssandbox:cbvsearch' %}" method="get">
+        <input name="q" type="text" placeholder="Search...">
+    </form>-->
+
+    <h3>User List</h3>
+{% load render_table from django_tables2 %}
+        {% render_table object_list %}
+
+{% endblock %}

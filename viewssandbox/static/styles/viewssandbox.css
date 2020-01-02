@@ -29,3 +29,6 @@ ul {
 .result, .search-result p {
     border-bottom: 2px dashed #cca;
 }
+th, td {
+    padding: 2em 1em;
+}

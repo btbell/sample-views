@@ -65,6 +65,10 @@ class UserInfoListView(generic.ListView):
     model = UserInfo
     template_name = 'viewssandbox/CBV_list.html'
 
+class UserInfoSortableListView(generic.ListView):
+    model = UserInfo
+    template_name = 'viewssandbox/CBV_sortable_list.html'
+
 class UserSearchListView(generic.ListView):
     model = UserInfo
     template_name = 'viewssandbox/CBV_search.html'
