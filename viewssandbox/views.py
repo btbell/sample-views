@@ -60,15 +60,20 @@ def model_form_test(request):
     form = DogInfoForm()
   return render(request, 'viewssandbox/model_user_form.html', {'form': form})
 
-# Class Based View example
+# # # Class-Based View example # # #
+
+# simple class-based view
 class UserInfoListView(generic.ListView):
     model = UserInfo
     template_name = 'viewssandbox/CBV_list.html'
 
+# simple CBV listview using Django-tables2 to give sortable columns
 class UserInfoSortableListView(generic.ListView):
     model = UserInfo
     template_name = 'viewssandbox/CBV_sortable_list.html'
 
+
+# simple listview with a search function using Q objects
 class UserSearchListView(generic.ListView):
     model = UserInfo
     template_name = 'viewssandbox/CBV_search.html'
