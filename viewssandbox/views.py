@@ -7,12 +7,14 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import UserInfo, DogInfo, Reporter, Article
 from .forms import UserForm, DogInfoForm
 from django.db.models import Q
+from django_tables2 import SingleTableView
+from .tables import UserTable
 #import datetime
 
 # landing page for the views sandbox
 def landing(request):
 
-    return render(request, 'viewssandbox/landing.html')
+  return render(request, 'viewssandbox/landing.html')
 
 # just a simple view with some html text
 def simple(request):
@@ -22,23 +24,23 @@ def simple(request):
 
 def test(request):
 
-    return render(request, 'viewssandbox/formtest.htmlNOTUSED')
+  return render(request, 'viewssandbox/formtest.htmlNOTUSED')
 
 
-# a simple Function Based LIST View with template INCLUDING Search
+# a simple Function-Based LISTView with template INCLUDING Search
 def fbvlist(request):
-    query = request.GET.get('q', None)
-    total_users = UserInfo.objects.all()
-    if query is not None:
-        # Q returns and object so you can make more complex searches - See Q and Django
-        total_users = total_users.filter(
-            Q(first_name__icontains=query) | Q(last_name__icontains=query)
-        )
-    context = {
-        'total_users': total_users,
-    }
+  query = request.GET.get('q', None)
+  total_users = UserInfo.objects.all()
+  if query is not None:
+      # Q returns and object so you can make more complex searches - See Q and Django
+      total_users = total_users.filter(
+          Q(first_name__icontains=query) | Q(last_name__icontains=query)
+      )
+  context = {
+      'total_users': total_users,
+  }
 
-    return render(request, 'viewssandbox/FBV_list.html', context=context)
+  return render(request, 'viewssandbox/FBV_list.html', context=context)
 
 
 def form_test(request):
@@ -50,7 +52,7 @@ def form_test(request):
     form = UserForm()
   return render(request, 'viewssandbox/user_form.html', {'form': form})
 
-# dog/owner form
+# dog/owner form - simple form
 def model_form_test(request):
   if request.method == 'POST':
     form = DogInfoForm(request.POST)
@@ -64,34 +66,42 @@ def model_form_test(request):
 
 # simple class-based view
 class UserInfoListView(generic.ListView):
-    model = UserInfo
-    template_name = 'viewssandbox/CBV_list.html'
+  model = UserInfo
+  template_name = 'viewssandbox/CBV_list.html'
 
 # simple CBV listview using Django-tables2 to give sortable columns
 class UserInfoSortableListView(generic.ListView):
-    model = UserInfo
-    template_name = 'viewssandbox/CBV_sortable_list.html'
+  model = UserInfo
+  template_name = 'viewssandbox/CBV_sortable_list.html'
 
+#
+# simple CBV listview using Django-tables2 AND excluding columns
+class UserInfoCustomSortableListView(SingleTableView):
+  model = UserInfo
+  table_class = UserTable
+  template_name = 'viewssandbox/CBV_custom_sortable_list.html'
 
+#
 # simple listview with a search function using Q objects
 class UserSearchListView(generic.ListView):
-    model = UserInfo
-    template_name = 'viewssandbox/CBV_search.html'
-    #queryset = UserInfo.objects.filter(first_name__icontains='hannah')  # new
+  model = UserInfo
+  template_name = 'viewssandbox/CBV_search.html'
 
-    def get_queryset(self):  # new
-        query = self.request.GET.get('q')
-        object_list = UserInfo.objects.filter(
-            Q(first_name__icontains=query) | Q(last_name__icontains=query)
-        )
-        return object_list
+  # Q objects for search function
+  def get_queryset(self):  # new
+    query = self.request.GET.get('q')
+    object_list = UserInfo.objects.filter(
+      Q(first_name__icontains=query) | Q(last_name__icontains=query)
+    )
+    return object_list
+
 
 class ReporterDetailView(generic.DetailView):
-    model = Reporter
-    template_name = 'viewssandbox/reporter_detail.html'
+  model = Reporter
+  template_name = 'viewssandbox/reporter_detail.html'
 
 class ArticleDetailView(generic.DetailView):
-    model = Article
+  model = Article
 
 
 
