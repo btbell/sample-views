@@ -1,34 +1,48 @@
 /* CSS document */
 
 body {
-    font-family: 'Cormorant', serif;
+font-family: 'Cormorant', serif;
 }
 h1, h3, footer {
-    font-family: 'Darker Grotesque', sans-serif;
+font-family: 'Darker Grotesque', sans-serif;
 }
 h3 {
-    color: red;
+color: red;
 }
 blockquote {
-    padding: .4rem .6rem;
-    background: #ccc;
-    font-family: "Courier New", Serif;
+padding: .4rem .6rem;
+background: #ccc;
+font-family: "Courier New", Serif;
 }
 .blockquote-header {
-    font: bold 90% 'Darker Grotesque', sans-serif;
+font: bold 90% 'Darker Grotesque', sans-serif;
 }
 .bq-with-top-margin {
-    margin-top: 1rem;
+margin-top: 1rem;
 }
 ul {
-    list-style-type: circle;
+list-style-type: circle;
 }
 .search-result {
-    list-style: none;
+list-style: none;
 }
 .result, .search-result p {
-    border-bottom: 2px dashed #cca;
+border-bottom: 2px dashed #cca;
 }
 th, td {
-    padding: 2em 1em;
+padding: 2em 1em;
+}
+.section-bg {
+padding: .4rem .8rem;
+border: 2px solid #026873;
+margin-bottom: .8rem;
+}
+.section-bg h3 {
+color: #A68B03;
+}
+.section-bg a {
+    color: #038C8C;
+}
+.section p {
+    color: #d9cb04;
 }
