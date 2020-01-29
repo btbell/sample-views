@@ -4,22 +4,31 @@
 
 {% block content %}
 <h1 class="landing-hdr">Views Sandbox</h1>
-  <p>This is a Django 2 web application which serves as a sandbox, test area, and reference by example for working with Django views.</p>
+  <p>This is a Django 2 web application which serves as a sandbox, test area, and reference by example for working with
+    Django views.</p>
   <hr>
 <section class="section-bg">
   <h3>Class-based Views</h3>
-  <p><a href="{% url 'viewssandbox:simple' %}"><em>Simple</em></a> - is an example of a very basic view returning html text using the HttpResponse method.</p>
-  <p><a href="{% url 'viewssandbox:cbvlist' %}"><em>cbvlist</em></a> - is an example of a List using a Class Based View (CBV) that includes a Search.</p>
-  <p><a href="{% url 'viewssandbox:cbv_sortable_list' %}"><em>cbv sortable table list</em></a> - same list as above but using Django-tables2 which has sortable headings.</p>
-  <p><a href="{% url 'viewssandbox:cbv_custom_sortable_list' %}"><em>cbv custom sortable table list</em></a> - same list as above but using Django-tables2 with a Table class that allows picking which sortable columns to show.</p>
+  <p><a href="{% url 'viewssandbox:simple' %}"><em>Simple</em></a> - is an example of a very basic view returning html
+    text using the HttpResponse method.</p>
+  <p><a href="{% url 'viewssandbox:cbvlist' %}"><em>cbvlist</em></a> - is an example of a basic Class-based View(CBV) that
+    is a list view, that includes a Django-based search on first or last names.</p>
+  <p><a href="{% url 'viewssandbox:cbv_sortable_list' %}"><em>cbv sortable table list</em></a> - same list view as above but
+    using Django-tables2 which has sortable columns.</p>
+  <p><a href="{% url 'viewssandbox:cbv_custom_sortable_list' %}"><em>cbv custom sortable table list</em></a> - same list
+    view as above but using Django-tables2 with a Table class that allows picking which sortable columns to show.</p>
+  <p><a href="#"><em>cbv custom filtered / sortable table list
+  </em></a> - same list view as above using Django-tables2 with a Table class with sortable columns AND filtered by status.</p>
 </section>
 <section class="section-bg">
   <h3>Function-based Views</h3>
-  <p><a href="{% url 'viewssandbox:fbvlist' %}"><em>fbvlist</em></a> - is an example of a List using a Function Based View (FBV). Includes a Search using CBV.</p>
+  <p><a href="{% url 'viewssandbox:fbvlist' %}"><em>fbvlist</em></a> - is an example of a basic Function-based View(FBV) that
+    is a list view, that includes a Django-based search on first or last names.</p>
 </section>
 <section class="section-bg">
   <h3>Form Views</h3>
   <p><a href="{% url 'viewssandbox:form_test' %}"><em>form_test</em></a> - is a form using the Form class (forms.Form).</p>
-  <p><a href="{% url 'viewssandbox:model_form_test' %}"><em>model_form_test</em></a> - is a form using the ModelForm class (forms.ModelForm).</p>
+  <p><a href="{% url 'viewssandbox:model_form_test' %}"><em>model_form_test</em></a> - is a form using the ModelForm class
+    (forms.ModelForm).</p>
 </section>
 {% endblock %}
