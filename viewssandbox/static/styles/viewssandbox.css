@@ -7,7 +7,7 @@ h1, h3, footer {
   font-family: 'Darker Grotesque', sans-serif;
 }
 h3 {
-color: red;
+  color: red;
 }
 blockquote {
   padding: .4rem .6rem;
@@ -21,7 +21,7 @@ blockquote {
   margin-top: 1rem;
 }
 ul {
-  list-style-type: circle;
+  list-style-type: disc;
 }
 .search-result {
   list-style: none;
