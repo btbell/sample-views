@@ -15,6 +15,7 @@ urlpatterns = [
   path('cbv_sortable_list/', views.UserInfoSortableListView.as_view(), name='cbv_sortable_list'),
   path('cbv_custom_sortable_list/', views.UserInfoCustomSortableListView.as_view(), name='cbv_custom_sortable_list'),
   path('search/', views.UserSearchListView.as_view(), name='cbvsearch'),
+  path('reporter_list/', views.ReporterListView.as_view(), name='reporter_list'),
   path('reporter/<int:pk>', views.ReporterDetailView.as_view(), name='reporter'),
   path('article/<int:pk>', views.ArticleDetailView.as_view(), name ='article'),
 ]

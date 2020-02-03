@@ -1,0 +1,10 @@
+{% extends 'viewssandbox/base.html' %}
+
+{% block content %}
+  <h3>Reporters</h3>
+  <ul>
+      {% for reporter in object_list %}
+        <li>{{ reporter.f_name }} {{ reporter.l_name}}</li>
+      {% endfor %}
+  </ul>
+{% endblock %}

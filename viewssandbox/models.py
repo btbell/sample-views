@@ -8,6 +8,7 @@ class CommonField(models.Model):
   created_date = models.DateTimeField(auto_now_add=True)
   update_date = models.DateTimeField(blank=True, null=True)
 
+##### USER INFO FORM #####
 # simple user info model
 class UserInfo(CommonField):
 
@@ -30,6 +31,7 @@ class UserInfo(CommonField):
     #fixes extra s in the admin panel object name
     verbose_name_plural = "User info"
 
+##### PET INFO FORM #####
 # simple user info for Modelforms
 class DogInfo(CommonField):
   pet_name = models.CharField(max_length=40, null=False, help_text="Please enter a first name.")
@@ -37,6 +39,7 @@ class DogInfo(CommonField):
   attend_date = models.DateField(null=False, blank=False)
   email = models.EmailField(null=False)
 
+##### REPORTER / ARTICLE #####
 class Reporter(models.Model):
   f_name = models.CharField(max_length=100)
   l_name = models.CharField(max_length=100)

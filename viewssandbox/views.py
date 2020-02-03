@@ -1,7 +1,7 @@
 from django.shortcuts import render
 #from django.views import generic
 from django.http import HttpResponse, HttpResponseRedirect
-#from django.urls import reverse, reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import UserInfo, DogInfo, Reporter, Article
@@ -95,6 +95,10 @@ class UserSearchListView(generic.ListView):
     )
     return object_list
 
+# reporter listview
+class ReporterListView(generic.ListView):
+  model = Reporter
+  template_name = 'viewssandbox/reporter_list.html'
 
 class ReporterDetailView(generic.DetailView):
   model = Reporter
