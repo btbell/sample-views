@@ -11,7 +11,7 @@
 <p>LAST NAME: {{ reporter.l_name }}</p>
 <!-- example of a reverse FK lookup -->
 {% for article in reporter.article_set.all %}
-<p>ARTICLES: {{ article.title }}</p>
+
 {% endfor %}
 
 

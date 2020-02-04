@@ -1,0 +1,14 @@
+{% extends 'viewssandbox/base.html' %}
+
+{% block content %}
+  <h3>Reporters</h3>
+  {% if reporter_list %}
+  <ul>
+      {% for reporter in reporter_list %}
+        <li><a href="#">{{ reporter.f_name }} {{ reporter.l_name}}</a></li>
+      {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no reporters listed at this time.</p>
+  {% endif %}
+{% endblock %}

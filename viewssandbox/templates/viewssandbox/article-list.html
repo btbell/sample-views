@@ -1,0 +1,15 @@
+{% extends 'viewssandbox/base.html' %}
+
+{% block content %}
+  <h3>Articles</h3>
+  {% if article_list %}
+  <ul>
+    {% for article in article_list %}
+      <!-- FK (reporter) defined in the article model -->
+      <li><a href="detail/{{ article.pk }}">{{ article.title }}</a> ({{ article.reporter }})</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no articles listed at this time.</p>
+  {% endif %}
+{% endblock %}
