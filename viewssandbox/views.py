@@ -97,23 +97,13 @@ class UserSearchListView(generic.ListView):
 
 # reporter listview
 class ReporterListView(generic.ListView):
-  #model = Reporter
+  model = Reporter
 
-  context_object_name = 'reporter'
-  queryset = Reporter.objects.all()
 
-  # get all of the Articles written by the Reporter.
-  # pretty sure the article_set is default naming, e.g. foo_set
-  context = Reporter.objects.get(id=1).article_set.all()
 
-  def get_context_data(self, **kwargs):
-    # call the "base implementation" first to get a context
-    context = super().get_context_data(**kwargs)
-    # add Queryset of all articles
-    context['article_set'] = Article.objects.all()
-    return context
 
-  #template_name = 'viewssandbox/reporter-list.html'
+
+  template_name = 'viewssandbox/reporter-list.html'
 
 class ReporterDetailView(generic.DetailView):
   model = Reporter
