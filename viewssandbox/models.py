@@ -46,7 +46,7 @@ class Reporter(models.Model):
 
   #Returns the url to access a particular reporter instance.
   def get_absolute_url(self):
-    return reverse('article-detail', args=[str(self.id)])
+    return reverse('reporter-detail', args=[str(self.id)])
 
   def __str__(self):
     return '{0}, {1}'.format(self.l_name, self.f_name)
@@ -56,11 +56,8 @@ class Article(models.Model):
   title = models.CharField(max_length=100)
   pub_date = models.DateField()
 
-  def get_absolute_url(self):
-    """
-    Returns the url to access a particular reporter instance.
-    """
-    return reverse('article-detail', args=[str(self.id)])
+  #def get_absolute_url(self):
+    #return reverse('article-detail', args=[str(self.id)])
 
   def __str__(self):
     return self.title

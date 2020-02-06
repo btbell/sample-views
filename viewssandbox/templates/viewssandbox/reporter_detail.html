@@ -1,0 +1,22 @@
+{% extends 'viewssandbox/base.html' %}
+
+{% block title %}Class Based View DetailView with FK{% endblock %}
+
+{% block content %}
+  <h1>Class Based View DETAIL with FK</h1>
+
+  <h3>Reporter</h3>
+
+  <p>FIRST NAME: {{ reporter.f_name }}</p>
+  <p>LAST NAME: {{ reporter.l_name }}</p>
+  <!-- example of a reverse FK lookup -->
+  <div class="article-list">
+    <h5>Article list</h5>
+      <ul>
+        {% for article in reporter.article_set.all %}
+        <!-- having trouble getting my head around the get_absolute_url, i can't get it to work -->
+        <li><a href="/views-sandbox/articles/{{ article.pk }}">{{ article.title }}</a></li>
+        {% endfor %}
+      </ul>
+   </div>
+{% endblock %}

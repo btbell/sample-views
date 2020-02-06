@@ -5,7 +5,7 @@
   {% if reporter_list %}
   <ul>
       {% for reporter in reporter_list %}
-        <li><a href="#">{{ reporter.f_name }} {{ reporter.l_name}}</a></li>
+        <li><a href="detail/{{ reporter.pk }}">{{ reporter.f_name }} {{ reporter.l_name}}</a></li>
       {% endfor %}
   </ul>
   {% else %}

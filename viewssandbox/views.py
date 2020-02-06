@@ -98,24 +98,32 @@ class UserSearchListView(generic.ListView):
 # reporter listview
 class ReporterListView(generic.ListView):
   model = Reporter
-
-
-
-
-
-  template_name = 'viewssandbox/reporter-list.html'
+  template_name = 'viewssandbox/reporter_list.html'
 
 class ReporterDetailView(generic.DetailView):
-  model = Reporter
-  template_name = 'viewssandbox/reporter-detail.html'
+  # when you need to override a method in a CBV, you'll need to comment out model and template and build
+  # your own method - in this case, to get a FK object, you need both tables in the query
+  #model = Reporter
+  #template_name = 'viewssandbox/reporter_detail.html'
+
+  context_object_name = 'reporter'
+  queryset = Reporter.objects.all()
+
+  # get all articles related to a reporter
+  context = Reporter.objects.get(id=1).article_set.all()
+
+  def get_context_data(self, **kwargs):
+    # call the base implementation (query) to get a context
+    context = super().get_context_data(**kwargs)
+    # add the queryset of all articles
+    context['article'] = Article.objects.all()
+    return context
+
 
 class ArticleListView(generic.ListView):
   model = Article
-  template_name = 'viewssandbox/article-list.html'
+  template_name = 'viewssandbox/article_list.html'
 
 class ArticleDetailView(generic.DetailView):
   model = Article
-  template_name = 'viewssandbox/article-detail.html'
-
-
-
+  template_name = 'viewssandbox/article_detail.html'

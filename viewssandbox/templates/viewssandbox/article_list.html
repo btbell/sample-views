@@ -6,7 +6,7 @@
   <ul>
     {% for article in article_list %}
       <!-- FK (reporter) defined in the article model -->
-      <li><a href="detail/{{ article.pk }}">{{ article.title }}</a> ({{ article.reporter }})</li>
+      <li><a href="{{ article.pk }}">{{ article.title }}</a> ({{ article.reporter }})</li>
     {% endfor %}
   </ul>
   {% else %}

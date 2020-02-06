@@ -17,6 +17,15 @@ blockquote {
 .blockquote-header {
   font: bold 90% 'Darker Grotesque', sans-serif;
 }
+.article-list {
+  background: #ccccaa;
+  border-radius: 1rem;
+  padding-left: .5rem;
+}
+.article-list h5 {
+  font: bold 100% 'Darker Grotesque', sans-serif;
+  color: #0000cd;
+}
 .bq-with-top-margin {
   margin-top: 1rem;
 }
