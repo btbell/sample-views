@@ -4,19 +4,19 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import UserInfo, DogInfo, Reporter, Article
+from .models import UserInfo, DogInfo, Reporter, Article, Tutorial
 from .forms import UserForm, DogInfoForm
 from django.db.models import Q
 from django_tables2 import SingleTableView
 from .tables import UserTable
 #import datetime
 
-# landing page for the views sandbox
+# # # LANDING page for the views sandbox # # #
 def landing(request):
 
   return render(request, 'viewssandbox/landing.html')
 
-# just a simple view with some html text
+# # # just a SIMPLE view with some html text # # #
 def simple(request):
 
   return HttpResponse('This is simple view with some text returned using the HttpResponse method and a text string.')
@@ -27,12 +27,12 @@ def test(request):
   return render(request, 'viewssandbox/formtest.htmlNOTUSED')
 
 
-# a simple Function-Based LISTView with template INCLUDING Search
+# # # simple Function-Based LISTView with template INCLUDING Search # # #
 def fbvlist(request):
   query = request.GET.get('q', None)
   total_users = UserInfo.objects.all()
   if query is not None:
-      # Q returns and object so you can make more complex searches - See Q and Django
+      # Q returns an object so you can make more complex searches - See Q and Django
       total_users = total_users.filter(
           Q(first_name__icontains=query) | Q(last_name__icontains=query)
       )
@@ -41,6 +41,14 @@ def fbvlist(request):
   }
 
   return render(request, 'viewssandbox/FBV_list.html', context=context)
+
+# # # Filtered, Sortable Function-based Listview # # #
+def fbv_filtered_sort_list(request):
+  table = UserInfo.objects.filter(status__exact='Professional')
+
+  return render(request, 'viewssandbox/FBV_filtered_sortable_list.html', {
+    "table": table
+  })
 
 
 def form_test(request):
@@ -62,7 +70,7 @@ def model_form_test(request):
     form = DogInfoForm()
   return render(request, 'viewssandbox/model_user_form.html', {'form': form})
 
-# # # Class-Based View example # # #
+# # # Class-Based View examples # # #
 
 # simple class-based view
 class UserInfoListView(generic.ListView):
@@ -74,14 +82,19 @@ class UserInfoSortableListView(generic.ListView):
   model = UserInfo
   template_name = 'viewssandbox/CBV_sortable_list.html'
 
-#
+
 # simple CBV listview using Django-tables2 AND excluding columns
 class UserInfoCustomSortableListView(SingleTableView):
   model = UserInfo
   table_class = UserTable
   template_name = 'viewssandbox/CBV_custom_sortable_list.html'
 
-#
+# simple CBV FILTERED listview using Django-tables2 AND excluding columns
+class UserInfoFilteredSortableListView(SingleTableView):
+  model = UserInfo
+  table_class = UserTable
+  template_name = 'viewssandbox/CBV_filtered_sortable_list.html'
+
 # simple listview with a search function using Q objects
 class UserSearchListView(generic.ListView):
   model = UserInfo
@@ -127,3 +140,12 @@ class ArticleListView(generic.ListView):
 class ArticleDetailView(generic.DetailView):
   model = Article
   template_name = 'viewssandbox/article_detail.html'
+
+#### Tutorial Views ####
+class TutorialListView(generic.ListView):
+  model = Tutorial
+  template_name = 'viewssandbox/tutorial_list.html'
+
+class TutorialDetailView(generic.ListView):
+  model = Tutorial
+  template_name = 'viewssandbox/tutorial_detail.html'

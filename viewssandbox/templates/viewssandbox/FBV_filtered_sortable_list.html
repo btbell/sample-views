@@ -1,0 +1,17 @@
+{% extends 'viewssandbox/base.html' %}
+
+{% block title %}Simple template{% endblock %}
+
+{% block content %}
+    <h1>Function-based View</h1>
+    <p>(list view with sortable columns, filtered by status equals "professional")</p>
+
+    <!--<form action="{% url 'viewssandbox:cbvsearch' %}" method="get">
+        <input name="q" type="text" placeholder="Search...">
+    </form>-->
+
+    <h3>User List</h3>
+{% load render_table from django_tables2 %}
+        {% render_table table %}
+
+{% endblock %}

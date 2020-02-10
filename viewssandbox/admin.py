@@ -11,3 +11,5 @@ admin.site.register(models.Reporter)
 #admin.site.register(Reporter)
 
 admin.site.register(models.Article)
+
+admin.site.register(models.Tutorial)

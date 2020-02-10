@@ -1,0 +1,14 @@
+{% extends 'viewssandbox/base.html' %}
+
+{% block content %}
+  <h3>Tutorials List</h3>
+  {% if tutorial_list %}
+  <ul>
+      {% for tutorial in tutorial_list %}
+        <li><a href="/tutorial/{{ tutorial.id}}">{{ tutorial.title }}</a></li>
+      {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no reporters listed at this time.</p>
+  {% endif %}
+{% endblock %}
