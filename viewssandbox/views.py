@@ -7,8 +7,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import UserInfo, DogInfo, Reporter, Article, Tutorial
 from .forms import UserForm, DogInfoForm
 from django.db.models import Q
-from django_tables2 import SingleTableView
-from .tables import UserTable
+from django_tables2 import SingleTableView, RequestConfig
+from .tables import UserTable, UserInfoTable
 #import datetime
 
 # # # LANDING page for the views sandbox # # #
@@ -26,8 +26,8 @@ def test(request):
 
   return render(request, 'viewssandbox/formtest.htmlNOTUSED')
 
-
-# # # simple Function-Based LISTView with template INCLUDING Search # # #
+# # # FUNCTION-Based View examples # # #
+# simple Function-Based LISTView with template INCLUDING Search
 def fbvlist(request):
   query = request.GET.get('q', None)
   total_users = UserInfo.objects.all()
@@ -42,9 +42,11 @@ def fbvlist(request):
 
   return render(request, 'viewssandbox/FBV_list.html', context=context)
 
-# # # Filtered, Sortable Function-based Listview # # #
+# Filtered, Sortable Function-based Listview
 def fbv_filtered_sort_list(request):
-  table = UserInfo.objects.filter(status__exact='Professional')
+  table = (UserInfoTable(UserInfo.objects.filter(status__exact='Professional')))
+  # sort no worky without request config!
+  RequestConfig(request).configure(table)
 
   return render(request, 'viewssandbox/FBV_filtered_sortable_list.html', {
     "table": table
@@ -70,7 +72,7 @@ def model_form_test(request):
     form = DogInfoForm()
   return render(request, 'viewssandbox/model_user_form.html', {'form': form})
 
-# # # Class-Based View examples # # #
+# # # CLASS-Based View examples # # #
 
 # simple class-based view
 class UserInfoListView(generic.ListView):
